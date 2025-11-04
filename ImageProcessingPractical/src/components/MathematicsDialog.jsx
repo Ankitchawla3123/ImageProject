@@ -38,13 +38,13 @@ export default function MathematicsDialog() {
               In digital image processing, an image is represented as a matrix of pixels.
               For a color image, each pixel has three intensity values:
             </p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s overflow-x-auto">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s overflow-x-auto">
 I(x, y) = [ R(x, y), G(x, y), B(x, y) ]
             </pre>
             <p>
               For a grayscale image, each pixel contains a single intensity value:
             </p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">I(x, y)</pre>
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">I(x, y)</pre>
             <p>
               Each pixel can be represented as a coordinate-intensity triplet:
               <br />
@@ -53,6 +53,8 @@ I(x, y) = [ R(x, y), G(x, y), B(x, y) ]
             </p>
           </section>
 
+          <hr className="border-t border-gray-500 my-6" />
+
           {/* 2. Grayscale */}
           <section>
             <h3 className="font-semibold text-3xl mb-2">🎨 2️⃣ Grayscale Conversion</h3>
@@ -60,13 +62,15 @@ I(x, y) = [ R(x, y), G(x, y), B(x, y) ]
               To convert a color image to grayscale, the RGB channels are combined using
               a weighted sum that reflects human visual perception:
             </p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 Gray = 0.299 × R + 0.587 × G + 0.114 × B
             </pre>
             <p>
               This formula gives a single brightness value per pixel, forming a 2D matrix.
             </p>
           </section>
+
+          <hr className="border-t border-gray-500 my-6" />
 
           {/* 3. Matrix Representation */}
           <section>
@@ -75,13 +79,15 @@ Gray = 0.299 × R + 0.587 × G + 0.114 × B
               Image transformations such as rotation, scaling, and translation can be
               represented using homogeneous coordinates:
             </p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 [x', y', I']ᵀ = T × [x, y, I]ᵀ
             </pre>
             <p>
               Each transformation has its own transformation matrix <code>T</code>.
             </p>
           </section>
+
+          <hr className="border-t border-gray-500 my-6" />
 
           {/* Rotation */}
           <section>
@@ -92,7 +98,7 @@ Gray = 0.299 × R + 0.587 × G + 0.114 × B
             </p>
 
             <h4 className="text-lg mt-2">1️⃣ Rotation Matrix</h4>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 [ x' ]   [ cosθ  -sinθ  0 ] [ x ]
 <br />
 [ y' ] = [ sinθ   cosθ  0 ] [ y ]
@@ -100,7 +106,7 @@ Gray = 0.299 × R + 0.587 × G + 0.114 × B
 [ I  ]   [  0      0    1 ] [ I ]
             </pre>
             <p>Therefore:</p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 x' = x·cosθ − y·sinθ
 y' = x·sinθ + y·cosθ
             </pre>
@@ -117,6 +123,8 @@ y' = x·sinθ + y·cosθ
             </ul>
           </section>
 
+          <hr className="border-t border-gray-500 my-6" />
+
           {/* Scaling */}
           <section>
             <h3 className="font-semibold text-3xl mb-2">📏 Scaling</h3>
@@ -126,7 +134,7 @@ y' = x·sinθ + y·cosθ
             </p>
 
             <h4 className="text-lg mt-2">1️⃣ Scaling Matrix</h4>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 [ x' ]   [ Sx  0   0 ] [ x ]
 <br />
 [ y' ] = [ 0   Sy  0 ] [ y ]
@@ -142,7 +150,7 @@ y' = x·sinθ + y·cosθ
             <p>
               To avoid holes and overlapping pixels, reverse mapping is used:
             </p>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 x = x′ / Sx
 <br />
 y = y′ / Sy
@@ -158,13 +166,13 @@ y = y′ / Sy
               the intensity is computed as a weighted average of the 4 nearest pixels:
             </p>
             <br />
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁)
 <br />
          + a(1 - b)·I(x₂, y₁)
-        <br />
+<br />
         + (1 - a)b·I(x₁, y₂)
-        <br />
+<br />
         + a·b·I(x₂, y₂)
             </pre>
             <br />
@@ -179,6 +187,8 @@ I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁)
             </p>
           </section>
 
+          <hr className="border-t border-gray-500 my-6" />
+
           {/* Translation */}
           <section>
             <h3 className="font-semibold text-3xl mb-2">📦 Translation</h3>
@@ -187,7 +197,7 @@ I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁)
             </p>
 
             <h4 className="text-lg mt-2">1️⃣ Translation Matrix</h4>
-            <pre className="bg-gray-700 mt-2 mb-2   p-2 rounded-md text-s">
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
 [ x' ]   [ 1  0  Tx ] [ x ]
 <br />
 [ y' ] = [ 0  1  Ty ] [ y ]
