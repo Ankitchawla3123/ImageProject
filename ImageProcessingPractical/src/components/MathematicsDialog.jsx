@@ -99,15 +99,13 @@ Gray = 0.299 × R + 0.587 × G + 0.114 × B
 
             <h4 className="text-lg mt-2">1️⃣ Rotation Matrix</h4>
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-[ x' ]   [ cosθ  -sinθ  0 ] [ x ]
-<br />
-[ y' ] = [ sinθ   cosθ  0 ] [ y ]
-<br />
+[ x' ]   [ cosθ  -sinθ  0 ] [ x ]{"\n"}
+[ y' ] = [ sinθ   cosθ  0 ] [ y ]{"\n"}
 [ I  ]   [  0      0    1 ] [ I ]
             </pre>
             <p>Therefore:</p>
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-x' = x·cosθ − y·sinθ
+x' = x·cosθ − y·sinθ{"\n"}
 y' = x·sinθ + y·cosθ
             </pre>
 
@@ -121,6 +119,30 @@ y' = x·sinθ + y·cosθ
               <li>Apply rotation using matrix above.</li>
               <li>Translate back: <code>x' = x₀' + cx, y' = y₀' + cy</code></li>
             </ul>
+
+            {/* 🧠 Combine all into one affine matrix */}
+            <h4 className="text-lg mt-4">3️⃣ Combined Affine Matrix</h4>
+            <p>
+              Combining all three steps — translation to origin, rotation, and translation back —
+              we get a single affine matrix <code>M</code>:
+            </p>
+
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
+M =
+[ cosθ   sinθ   (1 − cosθ)·cx − sinθ·cy ]{"\n"}
+
+   &nbsp;&nbsp;&nbsp;&nbsp;[ -sinθ  cosθ   sinθ·cx + (1 − cosθ)·cy ]
+            </pre>
+
+            <p className="mt-2">
+              The final rotated coordinates are obtained by multiplying the original
+              coordinates with this matrix:
+            </p>
+
+            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
+(x′, y′) = M · (x, y, 1)ᵀ
+            </pre>
+
           </section>
 
           <hr className="border-t border-gray-500 my-6" />
@@ -135,10 +157,8 @@ y' = x·sinθ + y·cosθ
 
             <h4 className="text-lg mt-2">1️⃣ Scaling Matrix</h4>
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-[ x' ]   [ Sx  0   0 ] [ x ]
-<br />
-[ y' ] = [ 0   Sy  0 ] [ y ]
-<br />
+[ x' ]   [ Sx  0   0 ] [ x ]{"\n"}
+[ y' ] = [ 0   Sy  0 ] [ y ]{"\n"}
 [ I  ]   [ 0   0   1 ] [ I ]
             </pre>
             <p>
@@ -151,8 +171,7 @@ y' = x·sinθ + y·cosθ
               To avoid holes and overlapping pixels, reverse mapping is used:
             </p>
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-x = x′ / Sx
-<br />
+x = x′ / Sx{"\n"}
 y = y′ / Sy
             </pre>
             <p>
@@ -167,13 +186,10 @@ y = y′ / Sy
             </p>
             <br />
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁)
-<br />
-         + a(1 - b)·I(x₂, y₁)
-<br />
-        + (1 - a)b·I(x₁, y₂)
-<br />
-        + a·b·I(x₂, y₂)
+I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁){"\n"}
+         + a(1 - b)·I(x₂, y₁){"\n"}
+         + (1 - a)b·I(x₁, y₂){"\n"}
+         + a·b·I(x₂, y₂)
             </pre>
             <br />
             <p>
@@ -198,10 +214,8 @@ I(x, y) ≈ (1 - a)(1 - b)·I(x₁, y₁)
 
             <h4 className="text-lg mt-2">1️⃣ Translation Matrix</h4>
             <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-[ x' ]   [ 1  0  Tx ] [ x ]
-<br />
-[ y' ] = [ 0  1  Ty ] [ y ]
-<br />
+[ x' ]   [ 1  0  Tx ] [ x ]{"\n"}
+[ y' ] = [ 0  1  Ty ] [ y ]{"\n"}
 [ I  ]   [ 0  0  1  ] [ I ]
             </pre>
             <p>

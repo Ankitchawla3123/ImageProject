@@ -9,7 +9,7 @@ export default function useRotate(cv, fileName) {
     const center = new cv.Point(grayMat.cols / 2, grayMat.rows / 2);
     const M = cv.getRotationMatrix2D(center, angle, 1);
     cv.warpAffine(grayMat, dst, M, new cv.Size(grayMat.cols, grayMat.rows));
-    console.log(`🔄 Rotated ${fileName} by ${angle}°`);
+    console.log(` Rotated ${fileName} by ${angle}°`);
     return dst;
   };
 
