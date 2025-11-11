@@ -120,28 +120,6 @@ y' = x·sinθ + y·cosθ
               <li>Translate back: <code>x' = x₀' + cx, y' = y₀' + cy</code></li>
             </ul>
 
-            {/* 🧠 Combine all into one affine matrix */}
-            <h4 className="text-lg mt-4">3️⃣ Combined Affine Matrix</h4>
-            <p>
-              Combining all three steps — translation to origin, rotation, and translation back —
-              we get a single affine matrix <code>M</code>:
-            </p>
-
-            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-M =
-[ cosθ   sinθ   (1 − cosθ)·cx − sinθ·cy ]{"\n"}
-
-   &nbsp;&nbsp;&nbsp;&nbsp;[ -sinθ  cosθ   sinθ·cx + (1 − cosθ)·cy ]
-            </pre>
-
-            <p className="mt-2">
-              The final rotated coordinates are obtained by multiplying the original
-              coordinates with this matrix:
-            </p>
-
-            <pre className="bg-gray-700 mt-2 mb-2 p-2 rounded-md text-s">
-(x′, y′) = M · (x, y, 1)ᵀ
-            </pre>
 
           </section>
 
